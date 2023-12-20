@@ -1,0 +1,62 @@
+#server:
+#  port: 7077
+#spring:
+#  datasource:
+#    url: jdbc:mysql://192.168.0.102:3306/test
+#    username: root
+#    password: Mysql@123
+#    initialization-mode: always
+#    driver-class: com.mysql.jdbc.Driver
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    database-platform: org.hibernate.dialect.MySQL8Dialect
+
+#spring:
+#  security:
+#    enable: true
+#    oauth2:
+#      resourceserver:
+#        jwt:
+##          jwt-set-uri: http://localhost:8585/realms/springboot-microservice-realm/protocol/openid-connect/certs
+#          issuer-uri: http://localhost:8585/realms/springboot-microservice-realm
+#  application:
+#    name: vehicle-service
+#  cloud:
+#    config:
+#      name: ${spring.application.name},eshop
+#      uri: http://localhost:9090
+#      failFast: true
+#      retry:
+#        maxAttempts: 20
+
+spring:
+  application:
+    name: vehicle-service
+  cloud:
+    config:
+      name: ${spring.application.name},eshop
+      uri: http://localhost:9090
+      failFast: true
+      retry:
+        maxAttempts: 20
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+#          jwk-set-uri: http://localhost:8585/realms/My-Realm/protocol/openid-connect/certs
+          issuer-uri: http://localhost:8585/realms/Rest-Realm
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9091/eureka
+server:
+  port: 7078
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+
+
